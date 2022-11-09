@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import "../../styles/home.css";
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 
 export const Home = () => {
 	const {store, actions} = useContext(Context);
@@ -17,7 +18,9 @@ export const Home = () => {
 					  <h5 className="card-title">{character.name}</h5>
 					</div>
 					<div className="d-flex justify-content-between">
-						<button className="btn btn-primary">Learn More</button>
+						<Link to='single'>
+							<button className="btn btn-primary">Learn More</button>
+						</Link>
 						<button className="btn btn-warning" onClick={() => {
 							actions.addFavorite(character)
 						}}><i className="far fa-heart"></i></button>
