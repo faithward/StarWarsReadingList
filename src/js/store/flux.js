@@ -34,9 +34,10 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 	  deleteFavorite: (fav) => {
       const tempArr = getStore().favorites
-      favIndex = tempArr.indexOf(fav, 0)
-		  const editList = tempArr.splice(favIndex, 1);
-		  setStore({ favorites: editList });
+      tempArr.filter(item => item != fav)
+      console.log(tempArr)
+		  //const editList = tempArr.splice(favIndex, 1);
+		  setStore({ favorites: tempArr });
 	  }
     },
   };
