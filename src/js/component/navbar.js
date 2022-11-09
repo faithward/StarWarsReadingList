@@ -30,11 +30,10 @@ export const Navbar = () => {
               <p className="dropdown-item">
                 {favorite.name}
               </p>
-			    <button className="btn btn-danger" onClick={() => {
-            favIndex = favorites.indexOf({favorite}, 0)
-          actions.deleteFavorite(favIndex)
-        }}><i className="fas fa-trash"></i></button>
-            </li>
+            <button className="btn btn-danger" onClick={() => {
+              actions.deleteFavorite({favorite})
+            }}><i className="fas fa-trash"></i></button>
+          </li>
 				)
 			})}
           </ul>

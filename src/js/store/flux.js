@@ -22,9 +22,9 @@ const getState = ({ getStore, getActions, setStore }) => {
           .catch((error) => console.log(error));
       },
       addFavorite: (fav) => {
-        const newFavorites = getStore().favorites;
-        newFavorites.push(fav);
-        setStore({ favorites: newFavorites });
+          const newFavorites = getStore().favorites;
+          newFavorites.push(fav);
+          setStore({ favorites: newFavorites });
       },
       getSingle: (singleUrl) => {
         fetch(singleUrl)
@@ -32,9 +32,11 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((data) => setStore({ singleEntry: data.result }))
           .catch((error) => console.log(error));
       },
-	  deleteFavorite: (favIndex) => {
-		const editList = favorites.splice(favIndex, 1);
-		setStore({ favorites: editList });
+	  deleteFavorite: (fav) => {
+      const tempArr = getStore().favorites
+      favIndex = tempArr.indexOf(fav, 0)
+		  const editList = tempArr.splice(favIndex, 1);
+		  setStore({ favorites: editList });
 	  }
     },
   };
