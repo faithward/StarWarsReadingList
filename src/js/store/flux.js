@@ -23,6 +23,11 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       addFavorite: (fav) => {
           const newFavorites = getStore().favorites;
+          for (let i = 0; i < newFavorites.length; i++){
+            if (newFavorites[i].name == fav.name){
+              return ''
+            }
+          }
           newFavorites.push(fav);
           setStore({ favorites: newFavorites });
       },
@@ -32,13 +37,12 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((data) => setStore({ singleEntry: data.result }))
           .catch((error) => console.log(error));
       },
-	  deleteFavorite: (fav) => {
-      const tempArr = getStore().favorites
-      tempArr.filter(item => item != fav)
-      console.log(tempArr)
-		  //const editList = tempArr.splice(favIndex, 1);
-		  setStore({ favorites: tempArr });
-	  }
+      deleteFavorite: (fav) => {
+        const tempArr = getStore().favorites
+        const newArr = tempArr.filter((item, index) => index != fav)
+        console.log(newArr)
+        setStore({ favorites: newArr });
+      }
     },
   };
 };

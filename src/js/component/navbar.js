@@ -6,7 +6,8 @@ import { useHistory } from "react-router-dom";
 export const Navbar = () => {
 	const {store, actions} = useContext(Context);
   const history = useHistory()
-  console.log(store.favorites)
+
+
   return (
     <nav className="navbar navbar-light bg-light mb-3 p-3">
       <Link to="/">
@@ -31,7 +32,7 @@ export const Navbar = () => {
                 {favorite.name}
               </p>
             <button className="btn btn-danger" onClick={() => {
-              actions.deleteFavorite({favorite})
+              actions.deleteFavorite(index)
             }}><i className="fas fa-trash"></i></button>
           </li>
 				)
