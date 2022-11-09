@@ -31,7 +31,7 @@ export const Navbar = () => {
                 {favorite.name}
               </p>
 			    <button className="btn btn-danger" onClick={() => {
-          favIndex = favorites.indexOf({favorite}, 0)
+            favIndex = favorites.indexOf({favorite}, 0)
           actions.deleteFavorite(favIndex)
         }}><i className="fas fa-trash"></i></button>
             </li>
