@@ -5,7 +5,8 @@ const getState = ({ getStore, getActions, setStore }) => {
   			baseImgURL:'https://starwars-visualguide.com/assets/img/',
 			characters: [],
 			planets: [],
-			favorites: []
+			favorites: [],
+			single: {}
 		},
 		actions: {
 			getCharacters: () => {
@@ -24,6 +25,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const newFavorites = getStore().favorites;
 				newFavorites.push(fav);
 				setStore({favorites: newFavorites});
+			}
+			getSingle: (singUrl) => {
+				fetch(singUrl)
+					.then(res => res.json)
+					.then(data => setStore({single: data.result}))
 			}
 		}
 		}
