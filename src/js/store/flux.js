@@ -4,6 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			baseURL: "https://www.swapi.tech/api/",
   			baseImgURL:'https://starwars-visualguide.com/assets/img/',
 			characters: [],
+			planets: [],
 			favorites: []
 		},
 		actions: {
@@ -11,6 +12,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch(getStore().baseURL + "people")
 				  .then((res) => res.json())
 				  .then((data) => setStore({characters:data.results}))
+				  .catch((error) => console.log(error));
+			  },
+			  getPlanets: () => {
+				fetch(getStore().baseURL + "planets")
+				  .then((res) => res.json())
+				  .then((data) => setStore({planets:data.results}))
 				  .catch((error) => console.log(error));
 			  },
 			addFavorite: (fav) => {

@@ -26,6 +26,26 @@ export const Home = () => {
 			)
 		})}
       </div>
+	  <h1>Planets</h1>
+      <div className="card-group">
+		{store.planets.map((planet) => {
+			return(
+			        <div className="card" key={planet.uid}>
+					<img src={store.baseImgURL + 'planets/' + planet.uid + '.jpg'} className="card-img-top" alt="..." />
+					<div className="card-body">
+					  <h5 className="card-title">{planet.name}</h5>
+					</div>
+					<div className="d-flex justify-content-between">
+						<button className="btn btn-primary">Learn More</button>
+						<button className="btn btn-warning" onClick={() => {
+							actions.addFavorite(planet)
+						}}><i className="far fa-heart"></i></button>
+					</div>
+				  </div>
+			)
+		})}
+      </div>
     </>
+	
   );
 };
