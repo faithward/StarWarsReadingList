@@ -6,7 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			characters: [],
 			planets: [],
 			favorites: [],
-			single: {}
+			singleEntry: {},
 		},
 		actions: {
 			getCharacters: () => {
@@ -25,11 +25,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const newFavorites = getStore().favorites;
 				newFavorites.push(fav);
 				setStore({favorites: newFavorites});
-			}
-			getSingle: (singUrl) => {
-				fetch(singUrl)
-					.then(res => res.json)
-					.then(data => setStore({single: data.result}))
+			},
+			getSingle: (singleUrl) => {
+				fetch(singleUrl)
+					.then((res) => res.json)
+					.then((data) => setStore({singleEntry: data.result}))
+					.catch((error) => console.log(error));
 			}
 		}
 		}
