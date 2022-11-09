@@ -1,9 +1,12 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
+import { useHistory } from "react-router-dom";
 
 export const Navbar = () => {
 	const {store, actions} = useContext(Context);
+  const history = useHistory()
+
   return (
     <nav className="navbar navbar-light bg-light mb-3 p-3">
       <Link to="/">
@@ -27,7 +30,10 @@ export const Navbar = () => {
               <p className="dropdown-item">
                 {favorite.name}
               </p>
-			  <button className="btn btn-danger"><i className="fas fa-trash"></i></button>
+			    <button className="btn btn-danger" onClick={() => {
+          favIndex = favorites.indexOf({favorite}, 0)
+          actions.deleteFavorite(favIndex)
+        }}><i className="fas fa-trash"></i></button>
             </li>
 				)
 			})}
